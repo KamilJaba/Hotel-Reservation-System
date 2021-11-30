@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=Room
+comment1.params=name\ priceMonday\ priceTuesday\ priceWednesday\ priceThursday\ priceFriday\ priceSaturday\ priceSunday\ maxOccupancy\ roomID
+comment1.target=Room(java.lang.String,\ int,\ int,\ int,\ int,\ int,\ int,\ int,\ int,\ int)
+comment10.params=day
+comment10.target=java.lang.String\ toString(java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ getRoomName()
+comment3.params=name
+comment3.target=void\ setName(java.lang.String)
+comment4.params=day
+comment4.target=int\ getPrice(java.lang.String)
+comment5.params=day\ price
+comment5.target=void\ setPrice(java.lang.String,\ int)
+comment6.params=
+comment6.target=int\ getMaxOccupancy()
+comment7.params=occupancy
+comment7.target=void\ setOccupancy(int)
+comment8.params=
+comment8.target=int\ getRoomID()
+comment9.params=roomID
+comment9.target=void\ setRoomID(int)
+numComments=11

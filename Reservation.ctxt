@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=Reservation
+comment1.params=Name\ arrivalday\ arrivalmonth\ arrivalyear\ departureday\ departuremonth\ departureyear\ people\ room
+comment1.target=Reservation(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ int,\ Room)
+comment10.params=
+comment10.target=java.util.UUID\ getreservID()
+comment11.params=
+comment11.target=void\ showReservation()
+comment2.params=Name\ arrivalday\ arrivalmonth\ arrivalyear\ departureday\ departuremonth\ departureyear\ people\ people2\ room\ room2
+comment2.target=Reservation(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ int,\ int,\ Room,\ Room)
+comment3.params=arrivalday\ arrivalmonth\ arrivalyear\ departureday\ departuremonth\ departureyear\ room
+comment3.target=int\ getTotalCost(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ Room)
+comment4.params=arrivalday\ arrivalmonth\ arrivalyear\ departureday\ departuremonth\ departureyear\ room\ room2
+comment4.target=int\ getTotalCost(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ Room,\ Room)
+comment5.params=
+comment5.target=int\ getReservationCost()
+comment6.params=
+comment6.target=java.lang.String\ getArrivalDate()
+comment7.params=
+comment7.target=java.lang.String\ getDepartureDate()
+comment8.params=
+comment8.target=java.lang.String\ getName()
+comment9.params=
+comment9.target=int\ getPeople()
+numComments=12
