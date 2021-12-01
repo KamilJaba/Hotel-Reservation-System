@@ -106,6 +106,11 @@ public class Room
         this.roomID = roomID;
     }
     
+    public String toString() {
+        int priceAverage = ((this.priceMonday + this.priceTuesday + this.priceWednesday + this.priceThursday + this.priceFriday + this.priceSaturday + this.priceSunday)/7); 
+        return "Name: " + roomName + ", Average Price: " + priceAverage + ", Max Occupancy: " + maxOccupancy;
+    }
+    
     public String toString(String day) {
         if (day == "monday") {
             return "Room Name: " + roomName + ", Price: " + priceMonday + ", Max Occupancy: " + maxOccupancy + ", RoomID: "+ roomID;

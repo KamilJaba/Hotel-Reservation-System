@@ -1,17 +1,9 @@
-#Tue Nov 30 21:24:45 GMT 2021
-bluej.teamsettings.ignore1=.*\\.class
+#Wed Dec 01 12:39:19 GMT 2021
+bluej.teamsettings.user=KamilJaba
 bluej.teamsettings.yourName=Kamil
 bluej.teamsettings.git.server=github.com
 bluej.teamsettings.yourEmail=kamiljablonski168@gmail.com
 bluej.teamsettings.git.repositoryPrefix=/KamilJaba/Hotel-Reservation-System
-bluej.teamsettings.vcs=git
-bluej.teamsettings.user=KamilJaba
-bluej.teamsettings.ignore3=team\\.defs
-bluej.teamsettings.ignore2=bluej\\.pkh
-bluej.teamsettings.ignore5=.*\\~
 bluej.teamsettings.git.branch=
-bluej.teamsettings.ignore4=.*\\.ctxt
-bluej.teamsettings.ignore7=.*\\\#backup
-bluej.teamsettings.ignore6=.*\\\#
+bluej.teamsettings.vcs=git
 bluej.teamsettings.git.protocol=https
-bluej.teamsettings.ignore8=\\.DS_Store

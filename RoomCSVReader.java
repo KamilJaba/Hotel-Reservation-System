@@ -23,7 +23,7 @@ public class RoomCSVReader
     public static Room getRoom(int RoomID) {
         return rooms.get(RoomID);
     }
-    
+
     public static String getRoomName(int RoomID) {
         return (rooms.get(RoomID).getRoomName());
     }
@@ -40,13 +40,18 @@ public class RoomCSVReader
             line = br.readLine();
             line = br.readLine();
 
+            //Room Counter to assign each room with right ID
+            int roomCounter = 0;
+
             while (line != null) {
                 String[] roomInfo = line.split(",");
                 int tempe = Integer.parseInt(roomInfo[2]);
+
                 //Creates each individual room.
                 for (int k = 1; k <= tempe; k++) {
-                    Room room = createRoom(roomInfo, k);
+                    Room room = createRoom(roomInfo, roomCounter);
                     rooms.add(room);
+                    roomCounter++;
                 }
                 line = br.readLine();
             }
