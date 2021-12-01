@@ -1,5 +1,4 @@
 import java.util.*;
-
 public class Room
 {
     private String roomName = "";

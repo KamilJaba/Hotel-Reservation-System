@@ -17,7 +17,7 @@ public class ReservationWriter
     //Initialize counter for later
     static int counter = 0;
 
-    public static void main(UUID ReservID, String Name, String Arrival, String Departure, int Rooms, String RoomName, int People, int Cost) throws java.io.IOException {
+    public static void main(UUID ReservID, String Name, String Arrival, String Departure, int Rooms, String RoomName, int People, double Cost, String bookingType) throws java.io.IOException {
         
         try (FileWriter writer = new FileWriter("Reservations.csv", true)) {
             Path currentDir = Paths.get(".");
@@ -59,6 +59,9 @@ public class ReservationWriter
             sb.append(',');
             sb.append(',');
             sb.append (Cost);
+            sb.append(',');
+            sb.append(bookingType);
+            
             writer.write(sb.toString());
 
         } catch (FileNotFoundException e) {
@@ -66,7 +69,7 @@ public class ReservationWriter
         }
     }
     
-    public static void main(UUID ReservID, String Name, String Arrival, String Departure, int Rooms, String RoomName, int People, String Room2Name, int People2, int Cost) throws java.io.IOException {
+    public static void main(UUID ReservID, String Name, String Arrival, String Departure, int Rooms, String RoomName, int People, String Room2Name, int People2, double Cost, String bookingType) throws java.io.IOException {
         
         try (FileWriter writer = new FileWriter("Reservations.csv", true)) {
             Path currentDir = Paths.get(".");
@@ -96,6 +99,9 @@ public class ReservationWriter
             sb.append (People2);
             sb.append(',');
             sb.append (Cost);
+            sb.append(',');
+            sb.append(bookingType);
+            
             writer.write(sb.toString());
 
         } catch (FileNotFoundException e) {
