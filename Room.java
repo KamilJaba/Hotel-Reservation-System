@@ -1,6 +1,7 @@
 import java.util.*;
 public class Room
 {
+    //Initializes Room Object values.
     private String roomName = "";
     private int priceMonday = 0;
     private int priceTuesday = 0;

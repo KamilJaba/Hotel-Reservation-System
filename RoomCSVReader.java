@@ -10,12 +10,10 @@ import java.nio.file.Paths;
 
 public class RoomCSVReader
 {
-    private String path = "/RoomInfo.csv";
     //Initiate rooms for getRoomList
     private static List<Room> rooms = null;
 
     public static List<Room> main(String[] args) throws java.io.IOException, java.io.FileNotFoundException {
-        List<Room> rooms = null;
         rooms = roomReader("RoomInfo.csv");
         return rooms;
     }
@@ -29,22 +27,28 @@ public class RoomCSVReader
     }
 
     private static List<Room> roomReader(String fileName) {
+        //Initializes Room object list for output
         List<Room> rooms = new ArrayList<>();
-        String line = null;
+        //Paths correctly to make sure the right RoomInfo is used as data to populate the Rooms object for other methods.
         Path currentDir = Paths.get(".");
         Path tempPath = currentDir.resolve("RoomInfo.csv");
         Path path = tempPath.getFileName();
+        
+        String line = null;
         try (BufferedReader br = Files.newBufferedReader(path)) {
             //Do it three times to skip heading rows in CSV file
             line = br.readLine();
             line = br.readLine();
             line = br.readLine();
-
+            
+            
             while (line != null) {
                 String[] roomInfo = line.split(",");
+                //Reads how much Rooms per room type to populate said amount for Rooms object. Leading to 264 rooms all together.
                 int tempe = Integer.parseInt(roomInfo[2]);
                 //Creates each individual room.
                 for (int k = 1; k <= tempe; k++) {
+                    //k is used in createroom to supply room with appropriate room number on the list.
                     Room room = createRoom(roomInfo, k);
                     rooms.add(room);
                 }
@@ -57,6 +61,7 @@ public class RoomCSVReader
     }
 
     private static Room createRoom(String[] data, int ID) {
+        //Initializing
         String roomName = "";
         int priceMonday = 0;
         int priceTuesday = 0;
@@ -67,7 +72,8 @@ public class RoomCSVReader
         int priceSunday = 0;
         int maxOccupancy = 0;
         int roomID = 0;
-
+        
+        //Inputs data from CSV according to the columns layed out in the original csv.
         for(int i = 1; i <= Integer.parseInt(data[2]); i++) {
             roomName = data[1];
             priceMonday = Integer.parseInt(data[5]);

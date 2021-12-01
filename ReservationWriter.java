@@ -6,40 +6,19 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.io.FileWriter;
 
-/**
- * Write a description of class ReservationWRite here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class ReservationWriter
 {
-    //Initialize counter for later
-    static int counter = 0;
-
     public static void main(UUID ReservID, String Name, String Arrival, String Departure, int Rooms, String RoomName, int People, double Cost, String bookingType) throws java.io.IOException {
-        
+        //True in FileWriter allows it to append to the csv instead of starting from the start, it starts from the first unused row.
         try (FileWriter writer = new FileWriter("Reservations.csv", true)) {
+            //Gets correct path for Reservations.csv
             Path currentDir = Paths.get(".");
             Path tempPath = currentDir.resolve("Reservations.csv");
             Path path = tempPath.getFileName();
-            List<String> lines = Files.readAllLines(path);
-
-            //for (String line : lines) {
-                //if (!"".equals(line)) {
-                    //continue;
-                //}
-                //else {
-                    //Counts how much lines are already used in reservations
-                    //counter = counter++;
-                //}
-            //}
-
+            
+            //String builder to create row for CSV writing
             StringBuilder sb = new StringBuilder();
-            //Skips previous reservations
-            //for (int i = 0; i <= counter; i++) {
-                //sb.append('\n');
-            //}
+ 
             sb.append('\n');
             sb.append (ReservID);
             sb.append(',');
@@ -55,27 +34,26 @@ public class ReservationWriter
             sb.append(',');
             sb.append (People);
             sb.append(',');
-            //Skips Room 2 Columns to Deliver Cost
+            //Skips Room 2 Columns as this method is the 1 Room Method
             sb.append(',');
             sb.append(',');
             sb.append (Cost);
             sb.append(',');
             sb.append(bookingType);
-            
+
             writer.write(sb.toString());
 
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
     }
-    
+
     public static void main(UUID ReservID, String Name, String Arrival, String Departure, int Rooms, String RoomName, int People, String Room2Name, int People2, double Cost, String bookingType) throws java.io.IOException {
-        
+
         try (FileWriter writer = new FileWriter("Reservations.csv", true)) {
             Path currentDir = Paths.get(".");
             Path tempPath = currentDir.resolve("Reservations.csv");
             Path path = tempPath.getFileName();
-            List<String> lines = Files.readAllLines(path);
 
             StringBuilder sb = new StringBuilder();
 
@@ -101,7 +79,7 @@ public class ReservationWriter
             sb.append (Cost);
             sb.append(',');
             sb.append(bookingType);
-            
+
             writer.write(sb.toString());
 
         } catch (FileNotFoundException e) {

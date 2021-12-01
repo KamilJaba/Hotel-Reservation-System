@@ -6,6 +6,7 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 
 public class Reservation {
+    //Initializes variables for Object Reservation
     private UUID reservID = null;
     private String arrival = null;
     private String arrivalday = null;
@@ -29,6 +30,7 @@ public class Reservation {
     private String bookingType = null;
 
     public Reservation(String Name, String arrivalday, String arrivalmonth, String arrivalyear, String departureday, String departuremonth, String departureyear, int people, Room room, String bookingType) throws java.text.ParseException, java.io.IOException {
+        //Inputs data into Reservation Object
         this.arrivalday = arrivalday;
         this.arrivalmonth = arrivalmonth;
         this.arrivalyear = arrivalyear;
@@ -42,15 +44,18 @@ public class Reservation {
         this.name = Name;
         this.rooms = 1;
         this.room1Name = room.getRoomName();
+        //UUID to get a practically always UNIQUE id for data storage
         UUID tempID = UUID.randomUUID();
         this.reservID = tempID;
         this.bookingType = bookingType;
+        //Gets total cost of Reservation for a 1 room booking.
         this.roomCost = Reservation.getTotalCost(arrivalday, arrivalmonth, arrivalyear, departureday, departuremonth, departureyear, room, bookingType);
+        
         ReservationWriter.main(this.reservID , this.name, this.arrival, this.departure, this.rooms, this.room1Name, this.people, this.roomCost, this.bookingType);
-        //this.room.addReservation(this);
     }
 
     public Reservation(String Name, String arrivalday, String arrivalmonth, String arrivalyear, String departureday, String departuremonth, String departureyear, int people, int people2, Room room, Room room2, String bookingType) throws java.text.ParseException, java.io.IOException {
+        //Inputs data into Reservation Object
         this.arrivalday = arrivalday;
         this.arrivalmonth = arrivalmonth;
         this.arrivalyear = arrivalyear;
@@ -67,114 +72,86 @@ public class Reservation {
         this.rooms = 2;
         this.room1Name = room.getRoomName();
         this.room2Name = room2.getRoomName();
+        //UUID to get a practically always UNIQUE id for data storage
         UUID tempID = UUID.randomUUID();
         this.reservID = tempID;
         this.bookingType = bookingType;
-
+        //Gets total cost of Reservation for a 2 room booking.
         this.roomCost = Reservation.getTotalCost(arrivalday, arrivalmonth, arrivalyear, departureday, departuremonth, departureyear, room, room2, bookingType);
 
         ReservationWriter.main(this.reservID , this.name, this.arrival, this.departure, this.rooms, this.room1Name, this.people, this.room2Name, this.people2, this.roomCost, this.bookingType);
-        //this.room.addReservation(this);
     }
-    
+
     public static double getTotalCost(String arrivalday, String arrivalmonth, String arrivalyear, String departureday, String departuremonth, String departureyear, Room room, String bookingType) {
+        //Strings together inputted String parts of date for a usable format for later methods.
         String temparrival = arrivalyear + "-" + arrivalmonth + "-" + arrivalday;
         String tempdeparture = departureyear + "-" + departuremonth + "-" + departureday;
-        
+
+        //Parses the string of arrival and departure into LocalDate for use later.
         LocalDate localarrival = LocalDate.parse(temparrival); //TEMP
         LocalDate localdeparture = LocalDate.parse(tempdeparture); //TEMP
-        
+
+        //Calcs days between using ChronoUnits imported above
         long daysBetween = ChronoUnit.DAYS.between(localarrival, localdeparture);
-        double tempcost = 0;
-        for (long i = 0; i <= daysBetween; i++) {
-            //int tempDay = date1.getDay();
-                //String tempDay = (localdate1.getDayOfWeek()).toString();
-                String tempDay = (localarrival.getDayOfWeek()).toString();
-            tempcost = tempcost + room.getPrice(tempDay);
-            //Goes to next date
-            //Calendar calendar = Calendar.getInstance();
-            //calendar.setTime(date1);
-            //calendar.add(Calendar.DAY_OF_YEAR, 1);
-            //date1 = calendar.getTime();
-                //localdate1.plusDays(1);
-                localarrival = localarrival.plusDays(1);
-        }
         
+        //Initializes tempcosts to use below
+        double tempcost = 0;
+        
+        //Iterates for how many days are between arrival and departure to calculate price
+        for (long i = 0; i <= daysBetween; i++) {
+            String tempDay = (localarrival.getDayOfWeek()).toString();
+            tempcost = tempcost + room.getPrice(tempDay);
+            localarrival = localarrival.plusDays(1);
+        }
+
+        //If booking type is AP, lower over all TOTAL cost by 5%
         if (bookingType == "AP") {
             tempcost = (tempcost*0.95);
         }
 
-        
         return tempcost;
     }
-    
+
     public static double getTotalCost(String arrivalday, String arrivalmonth, String arrivalyear, String departureday, String departuremonth, String departureyear, Room room, Room room2, String bookingType) {
+        
+        //Strings together inputted String parts of date for a usable format for later methods.
         String temparrival = arrivalyear + "-" + arrivalmonth + "-" + arrivalday;
         String tempdeparture = departureyear + "-" + departuremonth + "-" + departureday;
-        
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+
+        //Parses the string of arrival and departure into LocalDate for use later.
         LocalDate localarrival = LocalDate.parse(temparrival); //TEMP
         LocalDate localdeparture = LocalDate.parse(tempdeparture); //TEMP
-        
-        //LocalDate localdate1 = LocalDate.parse(temparrival, formatter);
-        //LocalDate localdate2 = LocalDate.parse(tempdate2, formatter);
 
-        //Converts Arrival and Departure to dd/MM/yyyy for using in functions
-        //Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(this.arrival);
-        //Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(this.departure);
-        //Converts Arrival and Departure further to Insant dates to calculate days vbetween.
-        //Instant instantFromDate1 = date1.toInstant();
-        //Instant instantFromDate2 = date2.toInstant();
-        //Calcs Days Between 2 dates for Price
-        //long daysBetween = ChronoUnit.DAYS.between(instantFromDate1, instantFromDate2);
-
-        //long daysBetween = ChronoUnit.DAYS.between(localdate1, localdate2);
+        //Calcs days between using ChronoUnits imported above
         long daysBetween = ChronoUnit.DAYS.between(localarrival, localdeparture);
+        
+        //Initializes tempcosts to use below
         double tempcost1 = 0;
         double tempcost2 = 0;
         
+        //Iterates for how many days are between arrival and departure to calculate price
         for (long i = 0; i <= daysBetween; i++) {
-            //int tempDay = date1.getDay();
-                //String tempDay = (localdate1.getDayOfWeek()).toString();
-                String tempDay = (localarrival.getDayOfWeek()).toString();
+            //Strings the days starting from arrival into its "MONDAY" equivalent to use room.getprice
+            String tempDay = (localarrival.getDayOfWeek()).toString();
             tempcost1 = tempcost1 + room.getPrice(tempDay);
             tempcost2 = tempcost2 + room2.getPrice(tempDay);
-            //Goes to next date
-            //Calendar calendar = Calendar.getInstance();
-            //calendar.setTime(date1);
-            //calendar.add(Calendar.DAY_OF_YEAR, 1);
-            //date1 = calendar.getTime();
-                //localdate1.plusDays(1);
-                localarrival = localarrival.plusDays(1);
+            localarrival = localarrival.plusDays(1);
         }
 
-
-        //for (long i = 0; i <= daysBetween; i++) {
-        //int tempDay = date1.getDay();
-        //String tempDay = (localdate1.getDayOfWeek()).toString();
-        //this.room1Cost = this.room1Cost + room.getPrice(tempDay);
-        //this.room2Cost = this.room2Cost + room.getPrice(tempDay);
-        //Goes to next date
-        //Calendar calendar = Calendar.getInstance();
-        //calendar.setTime(date1);
-        //calendar.add(Calendar.DAY_OF_YEAR, 1);
-        //date1 = calendar.getTime();
-        //localdate1.plusDays(1);
-        //}
-
+        //Adds the cost for both rooms
         double tempcost = tempcost1 + tempcost2;
         
+        //If booking type is AP, lower over all TOTAL cost by 5%
         if (bookingType == "AP") {
             tempcost = (tempcost*0.95);
         }
-        
+
         return tempcost;
     }
-    
+
     public double getReservationCost() {
         return this.roomCost;
     }
-    
 
     public String getArrivalDate() {
         return this.arrival;
@@ -202,6 +179,6 @@ public class Reservation {
         System.out.println("Arrival: " + this.getArrivalDate());
         System.out.println("Departure: " + this.getDepartureDate());
         System.out.println("No. People: " + this.getPeople());
-        //System.out.println("Room Type:" + room.getClass().getName());
+        //System.out.println("Room Type:" + rooms.getClass().getName());
     }
 }
