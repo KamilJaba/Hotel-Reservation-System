@@ -358,7 +358,7 @@ public class Main
 
         if (peopleInputted <= 3) {
             Main.boxBreak();
-            Main.singleRoomBooking(nameInputted, peopleInputted, arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted);
+            Main.singleRoomBooking(nameInputted, peopleInputted, arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, purchaseType);
         }
         else if (peopleInputted > 3) {
 
@@ -369,7 +369,7 @@ public class Main
         }
     }
 
-    public static void singleRoomBooking(String nameInputted, int peopleInputted, String arrDayInputted, String arrMonthInputted, String arrYearInputted, String depDayInputted, String depMonthInputted, String depYearInputted) {
+    public static void singleRoomBooking(String nameInputted, int peopleInputted, String arrDayInputted, String arrMonthInputted, String arrYearInputted, String depDayInputted, String depMonthInputted, String depYearInputted, String purchaseType) {
         String tempnameInputted = nameInputted;
         int temppeopleInputted = peopleInputted;
         String temparrDayInputted = arrDayInputted;
@@ -378,6 +378,7 @@ public class Main
         String tempdepDayInputted = depDayInputted;
         String tempdepMonthInputted = depMonthInputted;
         String tempdepYearInputted = depYearInputted;
+        String temppurchaseTypeInputted = purchaseType;
 
         //LocalDate Conversion for later
         String temparrival = temparrYearInputted + "-" + temparrMonthInputted + "-" + temparrDayInputted;
@@ -465,7 +466,58 @@ public class Main
                     //}
                 //}
                 //else {
-                    //Reservation temp = (
+                    //String tempPrice = Reservation.getTotalCost(arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, rooms.get(input), temppurchaseTypeInputted);
+                    //Main.boxBreak();
+                    //Main.boxStart();
+
+                        //System.out.println("The total price of the reservation is €" + tempprice);
+                        //System.out.println("");
+                        //System.out.println("Do you want to confirm the booking? Y or N");
+                        //System.out.println("");
+
+                    //Main.boxEnd();
+                    
+                    //checker = 1
+                    //String answer3 = in.nextLine();
+                    //while(checker >= 0)
+                        //if (answer3.equals("Y")) {
+                            //Reservation temp = new Reservation(nameInputted, arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, peopleInputted, rooms.get(input), temppurchaseTypeInputted);
+                            //Leon.bookedCSV(localarrival, localdeparture, input);
+                            //checker = 1
+                            //String answer3 = in.nextLine();
+                            //Main.boxBreak();
+                            //Main.boxStart();
+
+                            
+                            //System.out.println("Booking Successful!");
+                            //System.out.println("");
+                            //System.out.println("Type "exit" to return to main menu");
+                            //System.out.println("");
+
+                            //Main.boxEnd();
+                            //while(checker >= 0)
+                                //if (input.equals("exit") || input.equals("Exit") || input.equals("EXIT")) {
+                                    //Main.boxBreak();
+                                    //Main.main(null);
+                                    //checker = -1; 
+                                //}
+                                //else {
+                                   //System.out.println("Incorrect input please try again");
+                                    //CONTINUES LOOP
+                                //}
+                            //}
+                        //}
+                        //else if (answer.equals("N")) {
+                            //Main.boxBreak();
+                            //Main.main(null);
+                            //checker = -1;
+                        //}
+                        //else {
+                            //System.out.println("Incorrect input please try again");
+                            //CONTINUES LOOP
+                        //}
+                    //}
+                    
                 //}
                 System.out.println(input + " was inputted");
                 checker = -1;    
@@ -481,7 +533,179 @@ public class Main
             }
         }
     }
+    
+    public static void doubleRoomBooking(String nameInputted, int peopleInputted, String arrDayInputted, String arrMonthInputted, String arrYearInputted, String depDayInputted, String depMonthInputted, String depYearInputted, String purchaseType) {
+         String tempnameInputted = nameInputted;
+        int temppeopleInputted = peopleInputted;
+        String temparrDayInputted = arrDayInputted;
+        String temparrMonthInputted = arrMonthInputted;
+        String temparrYearInputted = arrYearInputted;
+        String tempdepDayInputted = depDayInputted;
+        String tempdepMonthInputted = depMonthInputted;
+        String tempdepYearInputted = depYearInputted;
+        String temppurchaseTypeInputted = purchaseType;
 
+        //LocalDate Conversion for later
+        String temparrival = temparrYearInputted + "-" + temparrMonthInputted + "-" + temparrDayInputted;
+        String tempdeparture = tempdepYearInputted + "-" + tempdepMonthInputted + "-" + tempdepDayInputted;
+
+        Scanner in = new Scanner(System.in);
+        List<Room> rooms = null;
+        try
+        {
+            //Initializes room data
+            rooms = RoomCSVReader.main(null);
+        }
+        catch (IOException ioe)
+        {
+            System.out.println("RoomInfo file not found");
+        }
+
+        Main.boxStart();
+        Room room1 = rooms.get(4);
+        Room room2 = rooms.get(36);
+        Room room3 = rooms.get(61);
+        Room room4 = rooms.get(71);
+        Room room5 = rooms.get(81);
+        Room room6 = rooms.get(121);
+        Room room7 = rooms.get(153);
+        Room room8 = rooms.get(165);
+        Room room9 = rooms.get(210);
+        Room room10 = rooms.get(221);
+
+        System.out.println("Reserving room from L4 Hotels!");
+        System.out.println("");
+        System.out.println("Select the first Room to rent below.");
+        System.out.println("");
+        System.out.println("1. " + room1.toString() + ", RoomIDs: 0-34");
+        System.out.println("2. " + room2.toString() + ", RoomIDs: 35-59");
+        System.out.println("3. " + room3.toString() + ", RoomIDs: 60-69");
+        System.out.println("4. " + room4.toString() + ", RoomIDs: 70-79");
+        System.out.println("5. " + room5.toString() + ", RoomIDs: 80-119");
+        System.out.println("6. " + room6.toString() + ", RoomIDs: 120-151");
+        System.out.println("7. " + room7.toString() + ", RoomIDs: 152-163");
+        System.out.println("8. " + room8.toString() + ", RoomIDs: 164-208");
+        System.out.println("9. " + room9.toString() + ", RoomIDs: 209-253");
+        System.out.println("10. " + room10.toString() + ", RoomIDs: 254-263");
+        System.out.println("");
+        System.out.println("Example: Input 1 or 241");
+        System.out.println("");
+        System.out.println("Type Exit to return to main menu");
+        System.out.println("");
+
+        Main.boxEnd();
+
+        //Turns time inputted into localdate for use in methods.
+        LocalDate localarrival = LocalDate.parse(temparrival);
+        LocalDate localdeparture = LocalDate.parse(tempdeparture);
+
+        int checker= 1;
+        while(checker >= 0) {
+            int input = in.nextInt();
+            //Used to be able to Exit instead
+            String inputToString =  "input";
+            if (input >= 0 && input <= 263) {
+                inputToString =  Integer.toString(input);
+                Main.boxBreak();
+                //if ((Leon.isItBooked(localarrival, localdeparture, input) = true) {
+                    //System.out.println("We have no rooms of this type available for the selected dates");
+                    //System.out.println("Would You like to choose another? Y or N?");
+                    //String answer = in.nextLine();
+                    //checker = 1
+                    
+                    //while(checker >= 0) {
+                        //if (answer.equals("Y")) {
+                            //Main.boxBreak();
+                            //Main.doubleRoomBooking(nameInputted, peopleInputted, arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted);
+                            //checker = -1
+                    //}
+                        //else if (answer.equals("N")) {
+                            //Main.boxBreak();
+                            //Main.main(null);
+                            //checker = -1; 
+                    //}
+                        //else {
+                            // System.out.println("Incorrect input please try again");
+                            //CONTINUES LOOP
+                        //}        
+                    //}
+                //}
+                //else {
+                    
+                    //System.out.println("");
+                    //System.out.println("Select the second Room to rent below.");
+                    //System.out.println("");
+                    
+                    
+                    
+                    //String tempPrice = Reservation.getTotalCost(arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, rooms.get(input), temppurchaseTypeInputted);
+                    //Main.boxBreak();
+                    //Main.boxStart();
+
+                        //System.out.println("The total price of the reservation is €" + tempprice);
+                        //System.out.println("");
+                        //System.out.println("Do you want to confirm the booking? Y or N");
+                        //System.out.println("");
+
+                    //Main.boxEnd();
+                    
+                    //checker = 1
+                    //String answer3 = in.nextLine();
+                    //while(checker >= 0)
+                        //if (answer3.equals("Y")) {
+                            //Reservation temp = new Reservation(nameInputted, arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, peopleInputted, rooms.get(input), temppurchaseTypeInputted);
+                            //Leon.bookedCSV(localarrival, localdeparture, input);
+                            //checker = 1
+                            //String answer3 = in.nextLine();
+                            //Main.boxBreak();
+                            //Main.boxStart();
+
+                            
+                            //System.out.println("Booking Successful!");
+                            //System.out.println("");
+                            //System.out.println("Type "exit" to return to main menu");
+                            //System.out.println("");
+
+                            //Main.boxEnd();
+                            //while(checker >= 0)
+                                //if (input.equals("exit") || input.equals("Exit") || input.equals("EXIT")) {
+                                    //Main.boxBreak();
+                                    //Main.main(null);
+                                    //checker = -1; 
+                                //}
+                                //else {
+                                   //System.out.println("Incorrect input please try again");
+                                    //CONTINUES LOOP
+                                //}
+                            //}
+                        //}
+                        //else if (answer.equals("N")) {
+                            //Main.boxBreak();
+                            //Main.main(null);
+                            //checker = -1;
+                        //}
+                        //else {
+                            //System.out.println("Incorrect input please try again");
+                            //CONTINUES LOOP
+                        //}
+                    //}
+                    
+                //}
+                System.out.println(input + " was inputted");
+                checker = -1;    
+            }
+            else if (inputToString.equals("exit") || inputToString.equals("Exit") || inputToString.equals("EXIT")) {
+                Main.boxBreak();
+                Main.main(null);
+                checker = -1; 
+            }
+            else {
+                System.out.println("Incorrect input please try again");
+                //CONTINUES LOOP
+            }
+        }   
+    }
+    
     public static void roomAvailabilityMenu() {
         Scanner in = new Scanner(System.in);
 
