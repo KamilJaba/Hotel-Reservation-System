@@ -90,6 +90,8 @@ public class Main
         System.out.println("");
         System.out.println("Type Exit to return to main menu");
         System.out.println("");
+        
+        Main.boxEnd();
 
         checker = 1;
         while(checker >= 0) {
@@ -124,6 +126,8 @@ public class Main
         System.out.println("");
         System.out.println("Type Exit to return to main menu");
         System.out.println("");
+        
+        Main.boxEnd();
 
         checker = 1;
         while(checker >= 0) {

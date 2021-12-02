@@ -1,12 +1,17 @@
 ------------------------------------------------------------------------
-This is the project README file. Here, you should describe your project.
-Tell the reader (someone who does not know anything about this project)
-all they need to know. The comments should usually include at least:
-------------------------------------------------------------------------
 
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
-USER INSTRUCTIONS:
+PROJECT TITLE: HOTEL RESERVATION SYSTEM
+PURPOSE OF PROJECT: ABILITY TO READ FROM DATA,BOOK A ROOM AND STORE THE RESERVATION DATA TO A CSV.
+DATE: 02/12/2021
+AUTHORS: KAMIL JABLONSKI 20278837, LEON CULLEN 20274815
+
+HOW TO RUN PROGRAM: 
+1. DOWNLOAD THE PROGRAM AND ALL ITS ASSOCIATED FILES ONTO YOUR COMPUTER
+2. OPEN UP CMD
+3. USE THE "CD" COMMAND TO NAVIGATE TO THE DIRECTORY WHERE YOU SAVED THE PROGRAM FOLDER
+4. ONCE IN THE CORRECT DIRECTORY TYPE "javac Main.java" TO MAKE SURE THE PROGRAM COMPILES
+5. TYPE "java Main" TO THEN RUN PROGRAM
+
+------------------------------------------------------------------------
+		
+
