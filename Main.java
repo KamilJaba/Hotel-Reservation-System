@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+import java.time.*;
 
 public class Main
 {
@@ -52,7 +53,8 @@ public class Main
         String depDayInputted = "";
         String depMonthInputted = "";
         String depYearInputted = "";
-        
+        String purchaseType= "";
+
         Scanner in = new Scanner(System.in);
 
         Main.boxStart();
@@ -89,6 +91,46 @@ public class Main
             if (input.equals("1") || input.equals("2") || input.equals("3") || input.equals("4") || input.equals("5") || input.equals("6") ) {
                 Main.boxBreak();
                 peopleInputted = Integer.parseInt(input);
+                System.out.println(input + " was inputted");
+                checker = -1;    
+            }
+            else if (input.equals("exit") || input.equals("Exit") || input.equals("EXIT")) {
+                Main.boxBreak();
+                Main.main(null);
+                checker = -1; 
+            }
+            else {
+                System.out.println("Incorrect input please try again");
+                //CONTINUES LOOP
+            }        
+        }
+        
+        Main.boxStart();
+
+        System.out.println("Reserving room from L4 Hotels!");
+        System.out.println("");
+        System.out.println("Would you like to make a Standard(S) or Advanced Purchase(AP)");
+        System.out.println("");
+        System.out.println("Standard reservations can be cancelled up to 48 hours before check-in.");
+        System.out.println("Advanced Purchase reservations cannot be cancelled but are 5% discounted in turn.");
+        System.out.println("");
+        System.out.println("Please input 'S' or 'AP' to make your choice.");
+        System.out.println("");
+        System.out.println("Type Exit to return to main menu");
+        System.out.println("");
+
+        checker = 1;
+        while(checker >= 0) {
+            String input = in.nextLine(); 
+            if (input.equals("S") || input.equals("s") || input.equals("3") || input.equals("4") || input.equals("5") || input.equals("6") ) {
+                Main.boxBreak();
+                purchaseType = input;
+                System.out.println(input + " was inputted");
+                checker = -1;    
+            }
+            else if (input.equals("AP") || input.equals("ap") || input.equals("Ap")) {
+                Main.boxBreak();
+                purchaseType = input;
                 System.out.println(input + " was inputted");
                 checker = -1;    
             }
@@ -319,14 +361,14 @@ public class Main
             Main.singleRoomBooking(nameInputted, peopleInputted, arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted);
         }
         else if (peopleInputted > 3) {
-            
+
         }
         else {
             System.out.println("People Inputted was incorrectly entered");
             Main.main(null);
         }
     }
-    
+
     public static void singleRoomBooking(String nameInputted, int peopleInputted, String arrDayInputted, String arrMonthInputted, String arrYearInputted, String depDayInputted, String depMonthInputted, String depYearInputted) {
         String tempnameInputted = nameInputted;
         int temppeopleInputted = peopleInputted;
@@ -336,18 +378,23 @@ public class Main
         String tempdepDayInputted = depDayInputted;
         String tempdepMonthInputted = depMonthInputted;
         String tempdepYearInputted = depYearInputted;
-        
+
+        //LocalDate Conversion for later
+        String temparrival = temparrYearInputted + "-" + temparrMonthInputted + "-" + temparrDayInputted;
+        String tempdeparture = tempdepYearInputted + "-" + tempdepMonthInputted + "-" + tempdepDayInputted;
+
+        Scanner in = new Scanner(System.in);
         List<Room> rooms = null;
         try
         {
             //Initializes room data
-        rooms = RoomCSVReader.main(null);
+            rooms = RoomCSVReader.main(null);
         }
         catch (IOException ioe)
         {
             System.out.println("RoomInfo file not found");
         }
-        
+
         Main.boxStart();
         Room room1 = rooms.get(4);
         Room room2 = rooms.get(36);
@@ -375,14 +422,66 @@ public class Main
         System.out.println("9. " + room9.toString() + ", RoomIDs: 209-253");
         System.out.println("10. " + room10.toString() + ", RoomIDs: 254-263");
         System.out.println("");
-        System.out.println("Example: Input 1 or 8");
+        System.out.println("Example: Input 1 or 241");
         System.out.println("");
         System.out.println("Type Exit to return to main menu");
         System.out.println("");
 
         Main.boxEnd();
+
+        //Turns time inputted into localdate for use in methods.
+        LocalDate localarrival = LocalDate.parse(temparrival);
+        LocalDate localdeparture = LocalDate.parse(tempdeparture);
+
+        int checker= 1;
+        while(checker >= 0) {
+            int input = in.nextInt();
+            //Used to be able to Exit instead
+            String inputToString =  "input";
+            if (input >= 0 && input <= 263) {
+                inputToString =  Integer.toString(input);
+                Main.boxBreak();
+                //if ((Leon.isItBooked(localarrival, localdeparture, input) = true) {
+                    //System.out.println("We have no rooms of this type available for the selected dates");
+                    //System.out.println("Would You like to choose another? Y or N?");
+                    //String answer = in.nextLine();
+                    //checker = 1
+                    
+                    //while(checker >= 0) {
+                        //if (answer.equals("Y")) {
+                            //Main.boxBreak();
+                            //Main.singleRoomBooking(nameInputted, peopleInputted, arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted);
+                            //checker = -1
+                    //}
+                        //else if (answer.equals("N")) {
+                            //Main.boxBreak();
+                            //Main.main(null);
+                            //checker = -1; 
+                    //}
+                        //else {
+                            // System.out.println("Incorrect input please try again");
+                            //CONTINUES LOOP
+                        //}        
+                    //}
+                //}
+                //else {
+                    //Reservation temp = (
+                //}
+                System.out.println(input + " was inputted");
+                checker = -1;    
+            }
+            else if (inputToString.equals("exit") || inputToString.equals("Exit") || inputToString.equals("EXIT")) {
+                Main.boxBreak();
+                Main.main(null);
+                checker = -1; 
+            }
+            else {
+                System.out.println("Incorrect input please try again");
+                //CONTINUES LOOP
+            }
+        }
     }
-    
+
     public static void roomAvailabilityMenu() {
         Scanner in = new Scanner(System.in);
 
@@ -395,6 +494,7 @@ public class Main
 
         Main.boxEnd();
     }
+
     public static void boxStart() {
         System.out.println("-------------------------------------------");
         System.out.println("");
