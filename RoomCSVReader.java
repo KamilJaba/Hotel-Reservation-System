@@ -8,26 +8,46 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/** CSV Reader for the Room info to populate the Room classes from.
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
 public class RoomCSVReader
 {
     private String path = "/RoomInfo.csv";
     //Initiate rooms for getRoomList
     private static List<Room> rooms = null;
-
+    
+    /** Main command to return the list of Room objects populated with data.
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public static List<Room> main(String[] args) throws java.io.IOException, java.io.FileNotFoundException {
         List<Room> rooms = null;
         rooms = roomReader("RoomInfo.csv");
         return rooms;
     }
-
+    
+    /** Returns the Room based on an inputted RoomID
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public static Room getRoom(int RoomID) {
         return rooms.get(RoomID);
     }
-
+    
+    /** Returns the Room name on an inputted RoomID
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public static String getRoomName(int RoomID) {
         return (rooms.get(RoomID).getRoomName());
     }
-
+    
+    /** Populates a List of Rooms for storing all the room informations and assigns appropriate RoomID's
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     private static List<Room> roomReader(String fileName) {
         List<Room> rooms = new ArrayList<>();
         String line = null;
@@ -60,7 +80,11 @@ public class RoomCSVReader
         }
         return rooms;
     }
-
+    
+    /** Creates Room objects from inputted data
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     private static Room createRoom(String[] data, int ID) {
         String roomName = "";
         int priceMonday = 0;

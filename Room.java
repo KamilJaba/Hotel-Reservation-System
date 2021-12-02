@@ -1,4 +1,8 @@
 import java.util.*;
+/** Represents a Room
+ * @author Kamil Jablonski
+ * @author 20278837
+ */
 public class Room
 {
     private String roomName = "";
@@ -13,7 +17,10 @@ public class Room
     private int roomID = 0;
     private boolean booked;
 
-
+    /** Room method to inhabit the variable of the room object.
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public Room (String name, int priceMonday, int priceTuesday, int priceWednesday, 
     int priceThursday, int priceFriday, int priceSaturday, int priceSunday, int maxOccupancy, int roomID) {
         this.roomName = name;
@@ -27,15 +34,28 @@ public class Room
         this.maxOccupancy = maxOccupancy;
         this.roomID = roomID;
     }
-
+    
+    /** Gets the Room object Name
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public String getRoomName() {
         return roomName;
     }
 
+    
+    /** Sets the Room object Name
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public void setName(String name) {
         this.roomName = name;
     }
 
+    /** Gets the Room objects price at the inputted Day of the Week
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public int getPrice(String day) {
         if (day == "MONDAY") {
             return priceMonday;
@@ -63,6 +83,10 @@ public class Room
         }
     }
     
+    /** Sets the Room objects price at the inputted Day of the Week
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public void setPrice(String day, int price) {
         if (day == "monday") {
             this.priceMonday = price;
@@ -89,28 +113,52 @@ public class Room
             return;
         }
     }
-
+    
+    /** Gets the Room objects Max Occupancy
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public int getMaxOccupancy() {
         return maxOccupancy;
     }
-
+    
+    /** Sets the Room objects Max Occupancy
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public void setOccupancy(int occupancy) {
         this.maxOccupancy = occupancy;
     }
     
+    /** Gets the Room objects RoomID
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public int getRoomID() {
         return roomID;
     }
-
+    
+    /** Sets the Room objects RoomID
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public void setRoomID(int roomID) {
         this.roomID = roomID;
     }
     
+    /** Strings the Room objects information into formatted string.
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public String toString() {
         int priceAverage = ((this.priceMonday + this.priceTuesday + this.priceWednesday + this.priceThursday + this.priceFriday + this.priceSaturday + this.priceSunday)/7); 
         return "Name: " + roomName + ", Average Price: " + priceAverage + ", Max Occupancy: " + maxOccupancy;
     }
     
+    /** Strings the Room objects information into formatted string based on a day of the week inputted.
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public String toString(String day) {
         if (day == "monday") {
             return "Room Name: " + roomName + ", Price: " + priceMonday + ", Max Occupancy: " + maxOccupancy + ", RoomID: "+ roomID;

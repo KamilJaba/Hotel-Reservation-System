@@ -2,8 +2,16 @@ import java.util.*;
 import java.io.*;
 import java.time.*;
 
+/** Main executable class to bring up the reservation interface.
+ * @author Kamil Jablonski
+ * @author 20278837
+ */
 public class Main
-{
+{   
+    /** Main menu interface startup.
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
@@ -14,8 +22,7 @@ public class Main
         System.out.println("Choose one of the options below");
         System.out.println("");
         System.out.println("1. Make a Reservation");
-        System.out.println("2. Check Room Availability");
-        System.out.println("3. Exit Program");
+        System.out.println("2. Exit Program");
 
         Main.boxEnd();
         int checker1 = 1;
@@ -28,11 +35,6 @@ public class Main
             }
             else if(input.equals("2")) {
                 Main.boxBreak();
-                System.out.println("Incomplete");
-                checker1 = -1;
-            }
-            else if(input.equals("3")) {
-                Main.boxBreak();
                 System.exit(0);
                 checker1 = -1;
             }
@@ -42,7 +44,11 @@ public class Main
         }
 
     }
-
+    
+    /** Reservation menu interface startup.
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public static void reservationMenu() {
         //Initializes values
         String nameInputted = "";
@@ -368,7 +374,11 @@ public class Main
             Main.main(null);
         }
     }
-
+    
+    /** Single room booking interface. (Uses inputted data from the reservation menu)
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public static void singleRoomBooking(String nameInputted, int peopleInputted, String arrDayInputted, String arrMonthInputted, String arrYearInputted, String depDayInputted, String depMonthInputted, String depYearInputted, String purchaseType) {
         String tempnameInputted = nameInputted;
         int temppeopleInputted = peopleInputted;
@@ -438,7 +448,7 @@ public class Main
         while(checker >= 0) {
             int input = in.nextInt();
             //Used to be able to Exit instead
-            String inputToString =  "input";
+            String inputToString =  String.valueOf(input);
             if (input >= 0 && input <= 263) {
                 inputToString =  Integer.toString(input);
                 Main.boxBreak();
@@ -534,6 +544,10 @@ public class Main
         }
     }
     
+    /** Double room booking interface. (Uses inputted data from the reservation menu)
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public static void doubleRoomBooking(String nameInputted, int peopleInputted, String arrDayInputted, String arrMonthInputted, String arrYearInputted, String depDayInputted, String depMonthInputted, String depYearInputted, String purchaseType) {
          String tempnameInputted = nameInputted;
         int temppeopleInputted = peopleInputted;
@@ -603,7 +617,7 @@ public class Main
         while(checker >= 0) {
             int input = in.nextInt();
             //Used to be able to Exit instead
-            String inputToString =  "input";
+            String inputToString =  String.valueOf(input);
             if (input >= 0 && input <= 263) {
                 inputToString =  Integer.toString(input);
                 Main.boxBreak();
@@ -635,10 +649,38 @@ public class Main
                     //System.out.println("");
                     //System.out.println("Select the second Room to rent below.");
                     //System.out.println("");
+                    //int checker= 1;
+                    //while(checker >= 0) {
+                    //int input2 = in.nextInt();;
+                    //String input2ToString = input2;
+                    //if (input2 >= 0 && input2 <= 263) {
+                        //if ((Leon.isItBooked(localarrival, localdeparture, input2) = true) {
+                        //System.out.println("We have no rooms of this type available for the selected dates");
+                        //System.out.println("Would You like to choose another? Y or N?");
+                        //String answer = in.nextLine();
+                        //checker = 1
                     
-                    
-                    
-                    //String tempPrice = Reservation.getTotalCost(arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, rooms.get(input), temppurchaseTypeInputted);
+                        //while(checker >= 0) {
+                            //if (answer.equals("Y")) {
+                                //Main.boxBreak();
+                                //Main.doubleRoomBooking(nameInputted, peopleInputted, arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted);
+                                //checker = -1
+                            //}
+                            //else if (answer.equals("N")) {
+                                //Main.boxBreak();
+                                //Main.main(null);
+                                //checker = -1; 
+                            //}
+                            //else {
+                                // System.out.println("Incorrect input please try again");
+                                //CONTINUES LOOP
+                            //}        
+                        //}
+                        
+                    //else {    
+                             
+                    //String tempPrice1 = Reservation.getTotalCost(arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, rooms.get(input), temppurchaseTypeInputted);
+                    //String tempPrice2 = Reservation.getTotalCost(arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, rooms.get(input2), temppurchaseTypeInputted);
                     //Main.boxBreak();
                     //Main.boxStart();
 
@@ -653,8 +695,9 @@ public class Main
                     //String answer3 = in.nextLine();
                     //while(checker >= 0)
                         //if (answer3.equals("Y")) {
-                            //Reservation temp = new Reservation(nameInputted, arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, peopleInputted, rooms.get(input), temppurchaseTypeInputted);
-                            //Leon.bookedCSV(localarrival, localdeparture, input);
+                            //Reservation temp = new Reservation(nameInputted, arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, peopleInputted, rooms.get(input), rooms.get(input2), temppurchaseTypeInputted);
+                            //Leon.markBooking(localarrival, localdeparture, input);
+                            //Leon.markBooking(localarrival, localdeparture, input2);
                             //checker = 1
                             //String answer3 = in.nextLine();
                             //Main.boxBreak();
@@ -691,6 +734,7 @@ public class Main
                     //}
                     
                 //}
+                //}
                 System.out.println(input + " was inputted");
                 checker = -1;    
             }
@@ -706,19 +750,10 @@ public class Main
         }   
     }
     
-    public static void roomAvailabilityMenu() {
-        Scanner in = new Scanner(System.in);
-
-        Main.boxStart();
-
-        System.out.println("L4 Room Availability Menu!");
-        System.out.println("");
-        System.out.println("Choose one of the options below");
-        System.out.println("");
-
-        Main.boxEnd();
-    }
-
+    /** Interface formatting support for the beginning of a menu screen.
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public static void boxStart() {
         System.out.println("-------------------------------------------");
         System.out.println("");
@@ -727,7 +762,11 @@ public class Main
         System.out.println("");
         System.out.println("\t");
     }
-
+    
+    /** Interface formatting support for the end of a menu screen.
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public static void boxEnd() {
         System.out.println("\t");
         System.out.println("");
@@ -736,7 +775,11 @@ public class Main
         System.out.println("");
         System.out.println("-------------------------------------------");
     }
-
+    
+    /** Interface formatting support for creating space in between menus.
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public static void boxBreak() {
         for (int i = 0; i <= 50; i++) {
             System.out.println("");

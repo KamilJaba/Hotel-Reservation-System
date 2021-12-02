@@ -4,7 +4,10 @@ import java.time.temporal.ChronoUnit;
 import java.lang.Object;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-
+/** Object to represent the Reservation
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
 public class Reservation {
     private UUID reservID = null;
     private String arrival = null;
@@ -27,7 +30,11 @@ public class Reservation {
     private int room1Cost = 0;
     private int room2Cost = 0;
     private String bookingType = null;
-
+    
+    /** Creates the Reservation Object
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public Reservation(String Name, String arrivalday, String arrivalmonth, String arrivalyear, String departureday, String departuremonth, String departureyear, int people, Room room, String bookingType) throws java.text.ParseException, java.io.IOException {
         this.arrivalday = arrivalday;
         this.arrivalmonth = arrivalmonth;
@@ -49,7 +56,11 @@ public class Reservation {
         ReservationWriter.main(this.reservID , this.name, this.arrival, this.departure, this.rooms, this.room1Name, this.people, this.roomCost, this.bookingType);
         //this.room.addReservation(this);
     }
-
+    
+    /** Overloaded creation of the Reservation Object to support 2 room reservations.
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public Reservation(String Name, String arrivalday, String arrivalmonth, String arrivalyear, String departureday, String departuremonth, String departureyear, int people, int people2, Room room, Room room2, String bookingType) throws java.text.ParseException, java.io.IOException {
         this.arrivalday = arrivalday;
         this.arrivalmonth = arrivalmonth;
@@ -77,6 +88,10 @@ public class Reservation {
         //this.room.addReservation(this);
     }
     
+    /** Returns the total cost of the reservation based off the inputted room,booking type, arrival & departure date.
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public static double getTotalCost(String arrivalday, String arrivalmonth, String arrivalyear, String departureday, String departuremonth, String departureyear, Room room, String bookingType) {
         String temparrival = arrivalyear + "-" + arrivalmonth + "-" + arrivalday;
         String tempdeparture = departureyear + "-" + departuremonth + "-" + departureday;
@@ -108,6 +123,10 @@ public class Reservation {
         return tempcost;
     }
     
+    /** Returns the total cost of the reservation based off the inputted room,booking type, arrival & departure date.
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public static double getTotalCost(String arrivalday, String arrivalmonth, String arrivalyear, String departureday, String departuremonth, String departureyear, Room room, Room room2, String bookingType) {
         String temparrival = arrivalyear + "-" + arrivalmonth + "-" + arrivalday;
         String tempdeparture = departureyear + "-" + departuremonth + "-" + departureday;
@@ -169,39 +188,45 @@ public class Reservation {
         }
         
         return tempcost;
-    }
-    
-    public double getReservationCost() {
-        return this.roomCost;
-    }
-    
+    }   
 
+    /** Returns the reservations arrival date as a string.
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public String getArrivalDate() {
         return this.arrival;
     }
 
+    /** Returns the reservations departure date as a string.
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public String getDepartureDate() {
         return this.departure;
     }
-
+    
+    /** Returns the reservations name as a string.
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public String getName() {
         return this.name;
     }
-
+    
+    /** Returns the reservations people as an integer.
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public int getPeople() {
         return this.people;
     }
-
+    
+    /** Returns the reservations UUID identifier.
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public UUID getreservID() {
         return this.reservID;
-    }
-
-    public void showReservation() {
-        System.out.println("Reservation: " + this.getreservID());
-        System.out.println("Name: " + this.getName());
-        System.out.println("Arrival: " + this.getArrivalDate());
-        System.out.println("Departure: " + this.getDepartureDate());
-        System.out.println("No. People: " + this.getPeople());
-        //System.out.println("Room Type:" + room.getClass().getName());
     }
 }

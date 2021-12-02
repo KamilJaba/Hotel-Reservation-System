@@ -1,8 +1,10 @@
 #BlueJ class context
 comment0.target=ReservationWriter
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ ReservationWRite\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\ Class\ to\ write\ to\ the\ CSV\ to\ store\ reservations\ data.\r\n\ @author\ Kamil\ Jablonski\r\n\ @author\ 20278837\r\n
 comment1.params=ReservID\ Name\ Arrival\ Departure\ Rooms\ RoomName\ People\ Cost\ bookingType
 comment1.target=void\ main(java.util.UUID,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ int,\ java.lang.String,\ int,\ double,\ java.lang.String)
+comment1.text=\ Writes\ the\ reservation\ to\ the\ CSV\ with\ inputted\ data\ for\ a\ single\ room\ reservation.\r\n\ @author\ Kamil\ Jablonski\r\n\ @author\ 20278837\r\n
 comment2.params=ReservID\ Name\ Arrival\ Departure\ Rooms\ RoomName\ People\ Room2Name\ People2\ Cost\ bookingType
 comment2.target=void\ main(java.util.UUID,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ int,\ java.lang.String,\ int,\ java.lang.String,\ int,\ double,\ java.lang.String)
+comment2.text=\ Overloaded\ method\ writes\ the\ reservation\ to\ the\ CSV\ with\ inputted\ data\ for\ a\ double\ room\ reservation.\r\n\ @author\ Kamil\ Jablonski\r\n\ @author\ 20278837\r\n
 numComments=3

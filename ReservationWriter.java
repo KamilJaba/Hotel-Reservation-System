@@ -6,17 +6,19 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.io.FileWriter;
 
-/**
- * Write a description of class ReservationWRite here.
- *
- * @author (your name)
- * @version (a version number or a date)
+/** Class to write to the CSV to store reservations data.
+ * @author Kamil Jablonski
+ * @author 20278837
  */
 public class ReservationWriter
 {
     //Initialize counter for later
     static int counter = 0;
-
+    
+    /** Writes the reservation to the CSV with inputted data for a single room reservation.
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public static void main(UUID ReservID, String Name, String Arrival, String Departure, int Rooms, String RoomName, int People, double Cost, String bookingType) throws java.io.IOException {
         
         try (FileWriter writer = new FileWriter("Reservations.csv", true)) {
@@ -69,6 +71,10 @@ public class ReservationWriter
         }
     }
     
+    /** Overloaded method writes the reservation to the CSV with inputted data for a double room reservation.
+     * @author Kamil Jablonski
+     * @author 20278837
+     */
     public static void main(UUID ReservID, String Name, String Arrival, String Departure, int Rooms, String RoomName, int People, String Room2Name, int People2, double Cost, String bookingType) throws java.io.IOException {
         
         try (FileWriter writer = new FileWriter("Reservations.csv", true)) {

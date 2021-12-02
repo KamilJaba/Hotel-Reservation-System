@@ -1,13 +1,19 @@
 #BlueJ class context
 comment0.target=RoomCSVReader
+comment0.text=\ CSV\ Reader\ for\ the\ Room\ info\ to\ populate\ the\ Room\ classes\ from.\r\n\ @author\ Kamil\ Jablonski\r\n\ @author\ 20278837\r\n
 comment1.params=args
 comment1.target=java.util.List\ main(java.lang.String[])
+comment1.text=\ Main\ command\ to\ return\ the\ list\ of\ Room\ objects\ populated\ with\ data.\r\n\ @author\ Kamil\ Jablonski\r\n\ @author\ 20278837\r\n
 comment2.params=RoomID
 comment2.target=Room\ getRoom(int)
+comment2.text=\ Returns\ the\ Room\ based\ on\ an\ inputted\ RoomID\r\n\ @author\ Kamil\ Jablonski\r\n\ @author\ 20278837\r\n
 comment3.params=RoomID
 comment3.target=java.lang.String\ getRoomName(int)
+comment3.text=\ Returns\ the\ Room\ name\ on\ an\ inputted\ RoomID\r\n\ @author\ Kamil\ Jablonski\r\n\ @author\ 20278837\r\n
 comment4.params=fileName
 comment4.target=java.util.List\ roomReader(java.lang.String)
+comment4.text=\ Populates\ a\ List\ of\ Rooms\ for\ storing\ all\ the\ room\ informations\ and\ assigns\ appropriate\ RoomID's\r\n\ @author\ Kamil\ Jablonski\r\n\ @author\ 20278837\r\n
 comment5.params=data\ ID
 comment5.target=Room\ createRoom(java.lang.String[],\ int)
+comment5.text=\ Creates\ Room\ objects\ from\ inputted\ data\r\n\ @author\ Kamil\ Jablonski\r\n\ @author\ 20278837\r\n
 numComments=6
