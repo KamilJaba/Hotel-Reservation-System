@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=leoncsv
+comment1.params=data\ indate\ outdate\ roomid
+comment1.target=boolean\ checkAvailability(java.lang.String[][],\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.params=file
+comment2.target=void\ booking(java.io.File)
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+numComments=4

@@ -1,6 +1,8 @@
 import java.util.*;
 import java.io.*;
 import java.time.*;
+import java.text.*;
+import java.io.IOException;
 
 /** Main executable class to bring up the reservation interface.
  * @author Kamil Jablonski
@@ -44,7 +46,7 @@ public class Main
         }
 
     }
-    
+
     /** Reservation menu interface startup.
      * @author Kamil Jablonski
      * @author 20278837
@@ -90,7 +92,7 @@ public class Main
         System.out.println("");
         System.out.println("Type Exit to return to main menu");
         System.out.println("");
-        
+
         Main.boxEnd();
 
         checker = 1;
@@ -112,7 +114,7 @@ public class Main
                 //CONTINUES LOOP
             }        
         }
-        
+
         Main.boxStart();
 
         System.out.println("Reserving room from L4 Hotels!");
@@ -126,7 +128,7 @@ public class Main
         System.out.println("");
         System.out.println("Type Exit to return to main menu");
         System.out.println("");
-        
+
         Main.boxEnd();
 
         checker = 1;
@@ -378,7 +380,7 @@ public class Main
             Main.main(null);
         }
     }
-    
+
     /** Single room booking interface. (Uses inputted data from the reservation menu)
      * @author Kamil Jablonski
      * @author 20278837
@@ -456,83 +458,94 @@ public class Main
             if (input >= 0 && input <= 263) {
                 inputToString =  Integer.toString(input);
                 Main.boxBreak();
+                boolean codeBypass = false;
+                //Leons command to check room booking.
                 //if ((Leon.isItBooked(localarrival, localdeparture, input) = true) {
-                    //System.out.println("We have no rooms of this type available for the selected dates");
-                    //System.out.println("Would You like to choose another? Y or N?");
-                    //String answer = in.nextLine();
-                    //checker = 1
-                    
-                    //while(checker >= 0) {
-                        //if (answer.equals("Y")) {
-                            //Main.boxBreak();
-                            //Main.singleRoomBooking(nameInputted, peopleInputted, arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted);
-                            //checker = -1
-                    //}
-                        //else if (answer.equals("N")) {
-                            //Main.boxBreak();
-                            //Main.main(null);
-                            //checker = -1; 
-                    //}
-                        //else {
-                            // System.out.println("Incorrect input please try again");
+                if (codeBypass = true) {    
+                    System.out.println("We have no rooms of this type available for the selected dates");
+                    System.out.println("Would You like to choose another? Y or N?");
+                    String answer = in.nextLine();
+                    checker = 1;
+
+                    while(checker >= 0) {
+                        if (answer.equals("Y")) {
+                            Main.boxBreak();
+                            Main.singleRoomBooking(nameInputted, peopleInputted, arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, temppurchaseTypeInputted);
+                            checker = -1;
+                        }
+                        else if (answer.equals("N")) {
+                            Main.boxBreak();
+                            Main.main(null);
+                            checker = -1; 
+                        }
+                        else {
+                            System.out.println("Incorrect input please try again");
                             //CONTINUES LOOP
-                        //}        
-                    //}
-                //}
-                //else {
-                    //String tempPrice = Reservation.getTotalCost(arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, rooms.get(input), temppurchaseTypeInputted);
-                    //Main.boxBreak();
-                    //Main.boxStart();
+                        }        
+                    }
+                }
+                else {
+                    double tempPrice = Reservation.getTotalCost(arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, rooms.get(input), temppurchaseTypeInputted);
+                    Main.boxBreak();
+                    Main.boxStart();
 
-                        //System.out.println("The total price of the reservation is €" + tempprice);
-                        //System.out.println("");
-                        //System.out.println("Do you want to confirm the booking? Y or N");
-                        //System.out.println("");
+                    System.out.println("The total price of the reservation is €" + tempPrice);
+                    System.out.println("");
+                    System.out.println("Do you want to confirm the booking? Y or N");
+                    System.out.println("");
 
-                    //Main.boxEnd();
-                    
-                    //checker = 1
-                    //String answer3 = in.nextLine();
-                    //while(checker >= 0)
-                        //if (answer3.equals("Y")) {
-                            //Reservation temp = new Reservation(nameInputted, arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, peopleInputted, rooms.get(input), temppurchaseTypeInputted);
-                            //Leon.bookedCSV(localarrival, localdeparture, input);
-                            //checker = 1
-                            //String answer3 = in.nextLine();
-                            //Main.boxBreak();
-                            //Main.boxStart();
+                    Main.boxEnd();
 
-                            
-                            //System.out.println("Booking Successful!");
-                            //System.out.println("");
-                            //System.out.println("Type "exit" to return to main menu");
-                            //System.out.println("");
+                    checker = 1;
+                    String answer3 = in.nextLine();
+                    while(checker >= 0)
+                        if (answer3.equals("Y")) {
+                            try {
+                                try {
+                                    Reservation temp = new Reservation(nameInputted, arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, peopleInputted, rooms.get(input), temppurchaseTypeInputted);
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+                            } catch(IOException ioException)
+                            {
+                                throw new RuntimeException("IO Exception in CommandLine Application",ioException);
+                            }
+                            //Temp code to mark the room as booked
+                            //Leon.markBooked(localarrival, localdeparture, input);
+                            checker = 1;
+                            String answer4 = in.nextLine();
+                            Main.boxBreak();
+                            Main.boxStart();
 
-                            //Main.boxEnd();
-                            //while(checker >= 0)
-                                //if (input.equals("exit") || input.equals("Exit") || input.equals("EXIT")) {
-                                    //Main.boxBreak();
-                                    //Main.main(null);
-                                    //checker = -1; 
-                                //}
-                                //else {
-                                   //System.out.println("Incorrect input please try again");
+                            System.out.println("Booking Successful!");
+                            System.out.println("");
+                            System.out.println("Type 'exit' to return to main menu");
+                            System.out.println("");
+
+                            Main.boxEnd();
+                            while(checker >= 0)
+                                if (answer4.equals("exit") || answer4.equals("Exit") || answer4.equals("EXIT")) {
+                                    Main.boxBreak();
+                                    Main.main(null);
+                                    checker = -1; 
+                                }
+                                else {
+                                    System.out.println("Incorrect input please try again");
                                     //CONTINUES LOOP
-                                //}
-                            //}
-                        //}
-                        //else if (answer.equals("N")) {
-                            //Main.boxBreak();
-                            //Main.main(null);
-                            //checker = -1;
-                        //}
-                        //else {
-                            //System.out.println("Incorrect input please try again");
+                                }
+                        }
+
+                        else if (answer3.equals("N")) {
+                            Main.boxBreak();
+                            Main.main(null);
+                            checker = -1;
+                        }
+                        else {
+                            System.out.println("Incorrect input please try again");
                             //CONTINUES LOOP
-                        //}
-                    //}
-                    
-                //}
+                        }
+                }
+
                 System.out.println(input + " was inputted");
                 checker = -1;    
             }
@@ -547,13 +560,13 @@ public class Main
             }
         }
     }
-    
+
     /** Double room booking interface. (Uses inputted data from the reservation menu)
      * @author Kamil Jablonski
      * @author 20278837
      */
     public static void doubleRoomBooking(String nameInputted, int peopleInputted, String arrDayInputted, String arrMonthInputted, String arrYearInputted, String depDayInputted, String depMonthInputted, String depYearInputted, String purchaseType) {
-         String tempnameInputted = nameInputted;
+        String tempnameInputted = nameInputted;
         int temppeopleInputted = peopleInputted;
         String temparrDayInputted = arrDayInputted;
         String temparrMonthInputted = arrMonthInputted;
@@ -625,123 +638,136 @@ public class Main
             if (input >= 0 && input <= 263) {
                 inputToString =  Integer.toString(input);
                 Main.boxBreak();
+                boolean codeBypass = false;
+                //Leons command to check room booking.
                 //if ((Leon.isItBooked(localarrival, localdeparture, input) = true) {
-                    //System.out.println("We have no rooms of this type available for the selected dates");
-                    //System.out.println("Would You like to choose another? Y or N?");
-                    //String answer = in.nextLine();
-                    //checker = 1
-                    
-                    //while(checker >= 0) {
-                        //if (answer.equals("Y")) {
-                            //Main.boxBreak();
-                            //Main.doubleRoomBooking(nameInputted, peopleInputted, arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted);
-                            //checker = -1
-                    //}
-                        //else if (answer.equals("N")) {
-                            //Main.boxBreak();
-                            //Main.main(null);
-                            //checker = -1; 
-                    //}
-                        //else {
-                            // System.out.println("Incorrect input please try again");
+                if (codeBypass = true) {    
+                    System.out.println("We have no rooms of this type available for the selected dates");
+                    System.out.println("Would You like to choose another? Y or N?");
+                    String answer = in.nextLine();
+                    checker = 1;
+
+                    while(checker >= 0) {
+                        if (answer.equals("Y")) {
+                            Main.boxBreak();
+                            Main.doubleRoomBooking(nameInputted, peopleInputted, arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, temppurchaseTypeInputted);
+                            checker = -1;
+                        }
+                        else if (answer.equals("N")) {
+                            Main.boxBreak();
+                            Main.main(null);
+                            checker = -1; 
+                        }
+                        else {
+                            System.out.println("Incorrect input please try again");
                             //CONTINUES LOOP
-                        //}        
-                    //}
-                //}
-                //else {
-                    
-                    //System.out.println("");
-                    //System.out.println("Select the second Room to rent below.");
-                    //System.out.println("");
-                    //int checker= 1;
-                    //while(checker >= 0) {
-                    //int input2 = in.nextInt();;
-                    //String input2ToString = input2;
-                    //if (input2 >= 0 && input2 <= 263) {
-                        //if ((Leon.isItBooked(localarrival, localdeparture, input2) = true) {
-                        //System.out.println("We have no rooms of this type available for the selected dates");
-                        //System.out.println("Would You like to choose another? Y or N?");
-                        //String answer = in.nextLine();
-                        //checker = 1
-                    
-                        //while(checker >= 0) {
-                            //if (answer.equals("Y")) {
-                                //Main.boxBreak();
-                                //Main.doubleRoomBooking(nameInputted, peopleInputted, arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted);
-                                //checker = -1
-                            //}
-                            //else if (answer.equals("N")) {
-                                //Main.boxBreak();
-                                //Main.main(null);
-                                //checker = -1; 
-                            //}
-                            //else {
-                                // System.out.println("Incorrect input please try again");
-                                //CONTINUES LOOP
-                            //}        
-                        //}
-                        
-                    //else {    
-                             
-                    //String tempPrice1 = Reservation.getTotalCost(arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, rooms.get(input), temppurchaseTypeInputted);
-                    //String tempPrice2 = Reservation.getTotalCost(arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, rooms.get(input2), temppurchaseTypeInputted);
-                    //Main.boxBreak();
-                    //Main.boxStart();
+                        }        
+                    }
+                }
+                else {
 
-                        //System.out.println("The total price of the reservation is €" + tempprice);
-                        //System.out.println("");
-                        //System.out.println("Do you want to confirm the booking? Y or N");
-                        //System.out.println("");
+                    System.out.println("");
+                    System.out.println("Select the second Room to rent below.");
+                    System.out.println("");
+                    checker= 1;
+                    while(checker >= 0) {
+                        int input2 = in.nextInt();;
+                        String input2ToString = String.valueOf(input2);
+                        if (input2 >= 0 && input2 <= 263) {
+                            //if ((Leon.isItBooked(localarrival, localdeparture, input2) = true) {
+                            System.out.println("We have no rooms of this type available for the selected dates");
+                            System.out.println("Would You like to choose another? Y or N?");
+                            String answer = in.nextLine();
+                            checker = 1;
 
-                    //Main.boxEnd();
-                    
-                    //checker = 1
-                    //String answer3 = in.nextLine();
-                    //while(checker >= 0)
-                        //if (answer3.equals("Y")) {
-                            //Reservation temp = new Reservation(nameInputted, arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, peopleInputted, rooms.get(input), rooms.get(input2), temppurchaseTypeInputted);
-                            //Leon.markBooking(localarrival, localdeparture, input);
-                            //Leon.markBooking(localarrival, localdeparture, input2);
-                            //checker = 1
-                            //String answer3 = in.nextLine();
-                            //Main.boxBreak();
-                            //Main.boxStart();
-
-                            
-                            //System.out.println("Booking Successful!");
-                            //System.out.println("");
-                            //System.out.println("Type "exit" to return to main menu");
-                            //System.out.println("");
-
-                            //Main.boxEnd();
-                            //while(checker >= 0)
-                                //if (input.equals("exit") || input.equals("Exit") || input.equals("EXIT")) {
-                                    //Main.boxBreak();
-                                    //Main.main(null);
-                                    //checker = -1; 
-                                //}
-                                //else {
-                                   //System.out.println("Incorrect input please try again");
+                            while(checker >= 0) {
+                                if (answer.equals("Y")) {
+                                    Main.boxBreak();
+                                    Main.doubleRoomBooking(nameInputted, peopleInputted, arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, temppurchaseTypeInputted);
+                                    checker = -1;
+                                }
+                                else if (answer.equals("N")) {
+                                    Main.boxBreak();
+                                    Main.main(null);
+                                    checker = -1; 
+                                }
+                                else {
+                                    System.out.println("Incorrect input please try again");
                                     //CONTINUES LOOP
-                                //}
-                            //}
-                        //}
-                        //else if (answer.equals("N")) {
-                            //Main.boxBreak();
-                            //Main.main(null);
-                            //checker = -1;
-                        //}
-                        //else {
-                            //System.out.println("Incorrect input please try again");
-                            //CONTINUES LOOP
-                        //}
-                    //}
-                    
-                //}
-                //}
+                                }        
+                            }
+                        } 
+                        else {    
+
+                            double tempPrice1 = Reservation.getTotalCost(arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, rooms.get(input), temppurchaseTypeInputted);
+                            double tempPrice2 = Reservation.getTotalCost(arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, rooms.get(input2), temppurchaseTypeInputted);
+                            double tempprice = tempPrice1 + tempPrice2;
+                            Main.boxBreak();
+                            Main.boxStart();
+
+                            System.out.println("The total price of the reservation is €" + tempprice);
+                            System.out.println("");
+                            System.out.println("Do you want to confirm the booking? Y or N");
+                            System.out.println("");
+
+                            Main.boxEnd();
+
+                            checker = 1;
+                            String answer3 = in.nextLine();
+                            while(checker >= 0)
+                                if (answer3.equals("Y")) {
+                                    try {
+                                        try {
+                                            Reservation temp = new Reservation(nameInputted, arrDayInputted, arrMonthInputted, arrYearInputted, depDayInputted, depMonthInputted, depYearInputted, peopleInputted, 5, rooms.get(input), rooms.get(input2), temppurchaseTypeInputted);
+                                        } catch (ParseException e) {
+                                            e.printStackTrace();
+                                        }
+                                    } catch(IOException ioException)
+                                    {
+                                        throw new RuntimeException("IO Exception in CommandLine Application",ioException);
+                                    }
+                                    //Leon.markBooking(localarrival, localdeparture, input);
+                                    //Leon.markBooking(localarrival, localdeparture, input2);
+                                    checker = 1;
+                                    Main.boxBreak();
+                                    Main.boxStart();
+
+                                    System.out.println("Booking Successful!");
+                                    System.out.println("");
+                                    System.out.println("Type 'exit' to return to main menu");
+                                    System.out.println("");
+
+                                    String answer4 = in.nextLine();
+                                    Main.boxEnd();
+                                    while(checker >= 0)
+                                        if (answer4.equals("exit") || answer4.equals("Exit") || answer4.equals("EXIT")) {
+                                            Main.boxBreak();
+                                            Main.main(null);
+                                            checker = -1; 
+                                        }
+                                        else {
+                                            System.out.println("Incorrect input please try again");
+                                            //CONTINUES LOOP
+                                        }
+                                }
+
+                                else if (answer3.equals("N")) {
+                                    Main.boxBreak();
+                                    Main.main(null);
+                                    checker = -1;
+                                }
+                                else {
+                                    System.out.println("Incorrect input please try again");
+                                    //CONTINUES LOOP
+                                }
+                        }
+
+                    }
+                }
                 System.out.println(input + " was inputted");
                 checker = -1;    
             }
+
             else if (inputToString.equals("exit") || inputToString.equals("Exit") || inputToString.equals("EXIT")) {
                 Main.boxBreak();
                 Main.main(null);
@@ -753,7 +779,7 @@ public class Main
             }
         }   
     }
-    
+
     /** Interface formatting support for the beginning of a menu screen.
      * @author Kamil Jablonski
      * @author 20278837
@@ -766,7 +792,7 @@ public class Main
         System.out.println("");
         System.out.println("\t");
     }
-    
+
     /** Interface formatting support for the end of a menu screen.
      * @author Kamil Jablonski
      * @author 20278837
@@ -779,7 +805,7 @@ public class Main
         System.out.println("");
         System.out.println("-------------------------------------------");
     }
-    
+
     /** Interface formatting support for creating space in between menus.
      * @author Kamil Jablonski
      * @author 20278837
